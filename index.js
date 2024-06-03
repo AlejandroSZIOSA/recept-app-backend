@@ -11,17 +11,29 @@ const recipeList = [
 
 app.use(bodyParser.json());
 
+//GET all recipes
 app.get("/", (req, res) => {
-  res.send("Hello, world!");
+  res.json(recipeList);
 });
 
+//GET a recipe by Id
+app.get("/:id", (req, res) => {
+  const found = recipeList.some((item) => item.id === req.params.id);
+  if (!found) {
+    res.status(400).json({ msg: `No recipe with this id = ${req.params.id}` });
+  } else {
+    res.json(recipeList.filter((item) => item.id === req.params.id));
+  }
+});
+
+//ADD new recipe
 app.post("/recipes", (req, res) => {
   const data = req.body;
   recipeList.push(data);
   res.send("Post data received:" + JSON.stringify(data));
 });
 
-// Define a DELETE route
+// DELETE a recipe by Id
 app.delete("/recipes/:id", (req, res) => {
   // Extract the ID from the request parameters
   const recipeId = parseInt(req.params.id);
@@ -35,7 +47,7 @@ app.delete("/recipes/:id", (req, res) => {
   }
 
   // Remove the item from the data store
-  recipeList.splice(recipeIndex, 1);
+  recipeList.splice(recipeIndex);
   console.log(recipeList);
   // Send a 200 response with a success message
   res.status(200).json({ message: "Item deleted successfully" });
