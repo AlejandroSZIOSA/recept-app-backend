@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 const app = express();
 const PORT = 4000;
@@ -9,11 +10,14 @@ const recipeList = [
   { id: 2, title: "title_2", cocking_time: "6 min" },
 ];
 
+app.use(cors()); //AXIOS
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); //AXIOS
 
 //GET all recipes
 app.get("/", (req, res) => {
-  res.json(recipeList);
+  /*  res.json(recipeList); */
+  res.send(JSON.stringify(recipeList));
 });
 
 //GET a recipe by Id
