@@ -46,22 +46,15 @@ app.post("/recipes", (req, res) => {
 
 // DELETE a recipe by Id
 app.delete("/recipes/:id", (req, res) => {
-  // Extract the ID from the request parameters
-  const recipeId = parseInt(req.params.id);
+  const { id } = req.params;
+  const itemIndex = recipeList.findIndex((item) => item.id === parseInt(id));
 
-  // Find the index of the item with the specified ID
-  const recipeIndex = recipeList.findIndex((item) => item.id === recipeId);
-
-  // If the item was not found, send a 404 response
-  if (recipeIndex === -1) {
-    return res.status(404).json({ message: "Item not found" });
+  if (itemIndex > -1) {
+    recipeList.splice(itemIndex, 1);
+    res.status(200).send({ message: "Item deleted successfully" });
+  } else {
+    res.status(404).send({ message: "Item not found" });
   }
-
-  // Remove the item from the data store
-  recipeList.splice(recipeIndex);
-  console.log(recipeList);
-  // Send a 200 response with a success message
-  res.status(200).json({ message: "Item deleted successfully" });
 });
 
 app.listen(PORT, () => {
