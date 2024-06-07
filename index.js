@@ -8,11 +8,18 @@ const PORT = 4000;
 const recipeList = [
   { id: 1, title: "title_1", cocking_time: "5 min" },
   { id: 2, title: "title_2", cocking_time: "6 min" },
+  { id: 3, title: "title_3", cocking_time: "6 min" },
 ];
 
-app.use(cors()); //AXIOS
+/* app.use(cors()); //AXIOS */
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); //AXIOS
+/* app.use(bodyParser.urlencoded({ extended: true })); //AXIOS */
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 
 //GET all recipes
 app.get("/", (req, res) => {
