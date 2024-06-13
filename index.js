@@ -1,14 +1,28 @@
 import express from "express";
 import bodyParser from "body-parser";
-import cors from "cors";
 
 const app = express();
 const PORT = 4000;
 
 const recipeList = [
-  { id: 1, title: "title_1", cocking_time: "5 min" },
-  { id: 2, title: "title_2", cocking_time: "6 min" },
-  { id: 3, title: "title_3", cocking_time: "6 min" },
+  {
+    id: 1,
+    title: "title_1",
+    ingredients_steps: "in steps 1",
+    cocking_time: "5 min",
+  },
+  {
+    id: 2,
+    title: "title_2",
+    ingredients_steps: "in steps 2",
+    cocking_time: "6 min",
+  },
+  {
+    id: 3,
+    title: "title_3",
+    ingredients_steps: "in steps 3",
+    cocking_time: "6 min",
+  },
 ];
 
 /* app.use(cors()); //AXIOS */
@@ -25,16 +39,6 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   /*  res.json(recipeList); */
   res.send(JSON.stringify(recipeList));
-});
-
-//GET a recipe by Id
-app.get("/:id", (req, res) => {
-  const found = recipeList.some((item) => item.id === req.params.id);
-  if (!found) {
-    res.status(400).json({ msg: `No recipe with this id = ${req.params.id}` });
-  } else {
-    res.json(recipeList.filter((item) => item.id === req.params.id));
-  }
 });
 
 //ADD new recipe
