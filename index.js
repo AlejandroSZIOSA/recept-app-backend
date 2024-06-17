@@ -7,21 +7,51 @@ const PORT = 4000;
 const recipeList = [
   {
     id: 1,
-    title: "title 1",
+    title: "Recipe 1",
     ingredients_steps: "ingredients steps 1",
-    cocking_time: "1 min",
+    cocking_time: "10 min",
   },
   {
     id: 2,
-    title: "title 2",
+    title: "Recipe 2",
     ingredients_steps: "ingredients steps 2",
-    cocking_time: "2 min",
+    cocking_time: "20 min",
   },
   {
     id: 3,
-    title: "title 3",
+    title: "Recipe 3",
     ingredients_steps: "ingredients steps 3",
-    cocking_time: "3 min",
+    cocking_time: "30 min",
+  },
+  {
+    id: 4,
+    title: "Recipe 4",
+    ingredients_steps: "ingredients steps 4",
+    cocking_time: "40 min",
+  },
+  {
+    id: 5,
+    title: "Recipe 5",
+    ingredients_steps: "ingredients steps 5",
+    cocking_time: "50 min",
+  },
+  {
+    id: 6,
+    title: "Recipe 6",
+    ingredients_steps: "ingredients steps 6",
+    cocking_time: "60 min",
+  },
+  {
+    id: 7,
+    title: "Recipe 7",
+    ingredients_steps: "ingredients steps 7",
+    cocking_time: "70 min",
+  },
+  {
+    id: 8,
+    title: "Recipe 8",
+    ingredients_steps: "ingredients steps 8",
+    cocking_time: "80 min",
   },
 ];
 
