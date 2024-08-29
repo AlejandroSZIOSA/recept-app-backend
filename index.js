@@ -73,8 +73,15 @@ app.get("/", (req, res) => {
 //ADD new recipe
 app.post("/recipes", (req, res) => {
   const data = req.body;
+  const createdId = recipeList.length + 1;
+  data.id = createdId;
   recipeList.push(data);
   res.send("Post data received:" + JSON.stringify(data));
+});
+
+//UPDATE
+app.put("/recipes/update/:id", (req, res) => {
+  const { id, title } = req.params;
 });
 
 // DELETE a recipe by Id
