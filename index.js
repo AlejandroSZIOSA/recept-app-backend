@@ -81,7 +81,16 @@ app.post("/recipes", (req, res) => {
 
 //UPDATE
 app.put("/recipes/update/:id", (req, res) => {
-  const { id, title } = req.params;
+  const data = req.body;
+  const { id } = req.params;
+
+  const itemIndex = recipeList.findIndex((item) => item.id === parseInt(id));
+  if (!itemIndex) {
+    recipeList[itemIndex].title = data.title;
+    res.status(200).send("Item Updated");
+  } else {
+    res.sendStatus(404).send("Item Not Found");
+  }
 });
 
 // DELETE a recipe by Id
