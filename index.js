@@ -56,7 +56,8 @@ const recipeList = [
 ];
 
 app.use(bodyParser.json());
-/* AXIOS Access */
+
+//SET HEADERS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE");
