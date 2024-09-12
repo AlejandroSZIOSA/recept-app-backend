@@ -63,7 +63,7 @@ app.put("/product/update/:id", (req, res) => {
   const data = req.body;
   const { id } = req.params;
   const itemIndex = productList.findIndex((item) => item.id === parseInt(id));
-  //Item Index <0 means doesnt exist
+  //Item Index <0 means item doesnt exist
   if (itemIndex >= 0) {
     productList[itemIndex].title = data.title;
     res.status(200).send("Item Updated");
