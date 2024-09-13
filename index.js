@@ -52,7 +52,7 @@ app.get("/products/:id", (req, res) => {
 });
 
 //ADD new recipe
-app.post("/products", (req, res) => {
+app.post("/product", (req, res) => {
   const data = req.body;
   const createdId = productList.length + 1;
   data.id = createdId;
