@@ -7,17 +7,17 @@ const PORT = 4000;
 const productList = [
   {
     id: 1,
-    title: "product 1",
+    name: "product 1",
     price: 100,
   },
   {
     id: 2,
-    title: "product 2",
+    name: "product 2",
     price: 200,
   },
   {
     id: 3,
-    title: "product 3",
+    name: "product 3",
     price: 300,
   },
 ];
@@ -59,13 +59,13 @@ app.post("/products", (req, res) => {
 });
 
 //UPDATE
-app.put("/product/update/:id", (req, res) => {
+app.put("/products/update/:id", (req, res) => {
   const data = req.body;
   const { id } = req.params;
   const itemIndex = productList.findIndex((item) => item.id === parseInt(id));
   //Item Index <0 means item doesnt exist
   if (itemIndex >= 0) {
-    productList[itemIndex].title = data.title;
+    productList[itemIndex].name = data.name;
     res.status(200).send("Item Updated");
   } else {
     res.sendStatus(404).send("Item Not Found");
