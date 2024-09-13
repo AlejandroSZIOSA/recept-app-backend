@@ -42,6 +42,8 @@ app.get("/", (req, res) => {
 app.get("/products/:id", (req, res) => {
   const { id } = req.params;
   const itemIndex = productList.findIndex((item) => item.id === parseInt(id));
+
+  //If itemIndex <0 so item doesn't exist
   if (itemIndex >= 0) {
     res.status(200).send(JSON.stringify(productList[itemIndex]));
   } else {
@@ -63,7 +65,7 @@ app.put("/products/update/:id", (req, res) => {
   const data = req.body;
   const { id } = req.params;
   const itemIndex = productList.findIndex((item) => item.id === parseInt(id));
-  //Item Index <0 means item doesnt exist
+
   if (itemIndex >= 0) {
     productList[itemIndex].name = data.name;
     res.status(200).send("Item Updated");
